@@ -2,3 +2,4 @@
 .rvmrc
 Manifest
 pkg/
+*.iml
