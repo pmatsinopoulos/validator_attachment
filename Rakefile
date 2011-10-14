@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('validator_attachment', '0.2.0') do |p|
+Echoe.new('validator_attachment', '0.3.0') do |p|
   p.summary     = "Is this ActiveModel Validator Used?"
   p.description = "Checks whether an ActiveModel Validator is attached to an attribute of a Model and with which options"
   p.url         = "http://github.com/pmatsinopoulos/validator_attachment"

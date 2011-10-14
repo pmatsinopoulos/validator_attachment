@@ -26,7 +26,7 @@ module ValidatorAttachment
   end
 end
 
-module ActiveRecord
+module ActiveModel
   class EachValidator
     extend ValidatorAttachment
   end
