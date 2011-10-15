@@ -3,3 +3,8 @@
 Manifest
 pkg/
 *.iml
+rdoc_output/
+doc/
+.yardoc/
+yard_output/
+*.gem

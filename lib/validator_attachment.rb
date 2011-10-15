@@ -1,4 +1,23 @@
 module ValidatorAttachment
+
+  # Given a +klass+ checks whether the target Validator is attached to
+  # the given +attribute+ of the model with class +klass+. It can also check
+  # whether validator is attached together with some +options+ and if these
+  # +options+ are the only ones used (given +exact_math+ +true+)
+  #
+  # @param [Class] klass the Model class that uses the Validator
+  # @param [Symbol] attribute the attribute of the Model class that we want
+  #   to check whether it uses the Validator or not
+  # @param [Hash] options optional parameter that, if given, will be used to
+  #   check whether the Validator is attached to the +attribute of the Model +klass+
+  #   but with the given +options+, even if there are more options (not exact match).
+  # @param [boolean] exact_match if +true+ then the +options+ given should be matched
+  #   with the +options+ of the Validator both in number and in content, and Validator
+  #   should not have more or less options.
+  # @return [boolean] whether Validator is attached or not
+  #
+  # @see http://github.com/pmatsinopoulos/validator_attachment Please project home page for more details and examples of usage.
+  #
   def is_attached?(klass, attribute, options=nil, exact_match=false)
     validators = klass._validate_callbacks.map{|vc| vc.raw_filter}
     validators = validators.find_all{ |val| val.is_a?(self) }
