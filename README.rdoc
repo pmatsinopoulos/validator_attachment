@@ -1,3 +1,89 @@
-== Validator Attachment
+= Validator Attachment
 
-(documentation will soon be provided)
+It works with Rails >=3.0. Helps me test my validations on Models with less code. Assuming that Rails validations are
+already tested, by Rails, then when I have a validation on an attribute of a Model, I just want to test whether the
+validation is there. Nothing more.
+
+== Usage
+
+Assuming that you have a Model like the following:
+
+    class MyAwesomeModel < ActiveRecord::Base
+      validates :last_name, :presence => true
+    end
+
+In your test:
+
+    test "last name has to be present" do
+      assert ActiveModel::PresenceValidator.is_attached?(MyAwesomeModel, :last_name)
+    end
+
+will test that your +last_name+ attribute on the model +MyAwesomeModel+ has a +:presence+ validation attached. Note
+that +ActiveModel+::+PresenceValidator+ is the +class+ that comes with Rails +ActiveModel+.
+
+Optionally, you can also check whether the correct options are attached too. So, if you have a Model like:
+
+    class MyAwesomeModel < ActiveRecord::Base
+      validates :last_name, :length => { :minimum => 3, :maximum => 60 }
+    end
+
+In your test:
+
+    test "last name should not be of correct length" do
+      # you do not have to check for all options
+      assert ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3 })
+      assert ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 })
+
+      # or you can check for all
+      assert ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3, :maximum => 60 })
+
+      # or you can ask for those and only those, i.e. exact content match
+      assert !ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 }, true)
+      assert ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum > 60, :maximum => 60 }, true)
+    end
+
+Another example with +with_options+:
+
+    class User < ActiveRecord::Base
+        with_options :if => :is_admin? do |admin|
+          admin.validates :password, :length => { :minimum => 10 }
+          admin.validates :username, :presence => true
+        end
+    end
+
+You can test this as follows:
+
+    test "user admin validators" do
+      assert ActiveModel::Validations::LengthValidator.is_attached?(User, :password, { :minimum => 10, :if => :is_admin? })
+      assert ActiveModel::Validations::PresenceValidator.is_attached?(User, :username, { :if => :is_admin? })
+    end
+
+In the file {validator_attachment_test.rb}[https://github.com/pmatsinopoulos/validator_attachment/blob/master/validator_attachment_test.rb]
+you will see a lot of tests that I run to test the +gem+ and you can get ideas on you should use your assertions. You will see
+there an example with a custom validator too.
+
+== How do you know which validator class is used, in order to test it?
+
+It is easy to derive the class of the validator. The rule of thumb is that all Validators are +ActiveModel+ validators with
+one exception that of +:uniqueness+, which is an +ActiveRecord+ Validator. However, here is a list that can help you:
+
+:acceptance:: ActiveModel::AcceptanceValidator
+:confirmation:: ActiveModel::ConfirmationValidator
+:exclusion:: ActiveModel::ExclusionValidator
+:format:: ActiveModel::FormatValidator
+:inclusion:: ActiveModel::InclusionValidator
+:length:: ActiveModel::LengthValidator
+:numericality:: ActiveModel::NumericalityValidator
+:uniqueness:: ActiveRecord::UniquenessValidator
+:presence:: ActiveModel::PresenceValidator
+
+== Issues
+
+If you find a problem with +validator_attachment+, please open an issue on {issue on GitHub}[https://github.com/pmatsinopoulos/validator_attachment/issues]
+
+== Versioning
+
+See the {CHANGELOG}[https://github.com/pmatsinopoulos/validator_attachment/blob/master/CHANGELOG] for release notes and versions
+of this `gem`. Please, note that `gem` follows {Semantic Versioning}[http://semver.org/] but patch version number will be increased
+if either bug fixes are introduced (as Semantic Versioning defines) or if tests or documents are added.
+
