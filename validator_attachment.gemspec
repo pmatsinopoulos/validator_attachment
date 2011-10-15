@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{Checks whether an ActiveModel Validator is attached to an attribute of a Model and with which options}
   s.email = %q{panayotis@matsinopoulos.gr}
   s.extra_rdoc_files = [%q{CHANGELOG}, %q{README.rdoc}, %q{lib/validator_attachment.rb}]
-  s.files = [%q{CHANGELOG}, %q{Gemfile}, %q{Gemfile.lock}, %q{MIT-LICENSE}, %q{README.rdoc}, %q{Rakefile}, %q{lib/validator_attachment.rb}, %q{test/dummy_validator.rb}, %q{test/test_helper.rb}, %q{test/validator_attachment_test.rb}, %q{validator_attachment.gemspec}, %q{validator_attachment.iml}, %q{Manifest}]
+  s.files = [%q{CHANGELOG}, %q{MIT-LICENSE}, %q{README.rdoc}, %q{Rakefile}, %q{lib/validator_attachment.rb}, %q{test/dummy_validator.rb}, %q{test/test_helper.rb}, %q{test/validator_attachment_test.rb}, %q{validator_attachment.gemspec}, %q{Manifest}]
   s.homepage = %q{http://github.com/pmatsinopoulos/validator_attachment}
   s.rdoc_options = [%q{--line-numbers}, %q{--inline-source}, %q{--title}, %q{Validator_attachment}, %q{--main}, %q{README.rdoc}]
   s.require_paths = [%q{lib}]
