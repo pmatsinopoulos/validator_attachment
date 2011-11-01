@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{validator_attachment}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Panayotis Matsinopoulos}]
-  s.date = %q{2011-10-15}
+  s.date = %q{2011-11-01}
   s.description = %q{Checks whether an ActiveModel Validator is attached to an attribute of a Model and with which options}
   s.email = %q{panayotis@matsinopoulos.gr}
   s.extra_rdoc_files = [%q{CHANGELOG}, %q{README.rdoc}, %q{lib/validator_attachment.rb}]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = [%q{--line-numbers}, %q{--inline-source}, %q{--title}, %q{Validator_attachment}, %q{--main}, %q{README.rdoc}]
   s.require_paths = [%q{lib}]
   s.rubyforge_project = %q{validator_attachment}
-  s.rubygems_version = %q{1.8.8}
+  s.rubygems_version = %q{1.8.6}
   s.summary = %q{Is this ActiveModel Validator Used?}
   s.test_files = [%q{test/validator_attachment_test.rb}, %q{test/test_helper.rb}]
 
