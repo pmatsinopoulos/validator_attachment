@@ -58,7 +58,7 @@ You can test this as follows:
       assert ActiveModel::Validations::PresenceValidator.is_attached?(User, :username, { :if => :is_admin? })
     end
 
-In the file {validator_attachment_test.rb}[https://github.com/pmatsinopoulos/validator_attachment/blob/master/validator_attachment_test.rb]
+In the file {validator_attachment_test.rb}[https://github.com/pmatsinopoulos/validator_attachment/blob/master/test/validator_attachment_test.rb]
 you will see a lot of tests that I run to test the +gem+ and you can get ideas on you should use your assertions. You will see
 there an example with a custom validator too.
 
