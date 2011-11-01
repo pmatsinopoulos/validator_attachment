@@ -67,15 +67,15 @@ there an example with a custom validator too.
 It is easy to derive the class of the validator. The rule of thumb is that all Validators are +ActiveModel+ validators with
 one exception that of +:uniqueness+, which is an +ActiveRecord+ Validator. However, here is a list that can help you:
 
-:acceptance:: ActiveModel::AcceptanceValidator
-:confirmation:: ActiveModel::ConfirmationValidator
-:exclusion:: ActiveModel::ExclusionValidator
-:format:: ActiveModel::FormatValidator
-:inclusion:: ActiveModel::InclusionValidator
-:length:: ActiveModel::LengthValidator
-:numericality:: ActiveModel::NumericalityValidator
-:uniqueness:: ActiveRecord::UniquenessValidator
-:presence:: ActiveModel::PresenceValidator
+:acceptance:: ActiveModel::Validations::AcceptanceValidator
+:confirmation:: ActiveModel::Validations::ConfirmationValidator
+:exclusion:: ActiveModel::Validations::ExclusionValidator
+:format:: ActiveModel::Validations::FormatValidator
+:inclusion:: ActiveModel::Validations::InclusionValidator
+:length:: ActiveModel::Validations::LengthValidator
+:numericality:: ActiveModel::Validations::NumericalityValidator
+:uniqueness:: ActiveRecord::Validations::UniquenessValidator
+:presence:: ActiveModel::Validations::PresenceValidator
 
 == Issues
 
