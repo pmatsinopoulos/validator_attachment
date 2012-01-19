@@ -15,11 +15,11 @@ Assuming that you have a Model like the following:
 In your test:
 
     test "last name has to be present" do
-      assert ActiveModel::PresenceValidator.is_attached?(MyAwesomeModel, :last_name)
+      assert ActiveModel::Validations::PresenceValidator.is_attached?(MyAwesomeModel, :last_name)
     end
 
 will test that your +last_name+ attribute on the model +MyAwesomeModel+ has a +:presence+ validation attached. Note
-that +ActiveModel+::+PresenceValidator+ is the +class+ that comes with Rails +ActiveModel+.
+that +ActiveModel+::+Validations+::+PresenceValidator+ is the +class+ that comes with Rails +ActiveModel+.
 
 Optionally, you can also check whether the correct options are attached too. So, if you have a Model like:
 
@@ -31,15 +31,15 @@ In your test:
 
     test "last name should not be of correct length" do
       # you do not have to check for all options
-      assert ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3 })
-      assert ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 })
+      assert ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3 })
+      assert ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 })
 
       # or you can check for all
-      assert ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3, :maximum => 60 })
+      assert ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3, :maximum => 60 })
 
       # or you can ask for those and only those, i.e. exact content match
-      assert !ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 }, true)
-      assert ActiveModel::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum > 60, :maximum => 60 }, true)
+      assert !ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 }, true)
+      assert ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum > 60, :maximum => 60 }, true)
     end
 
 Another example with +with_options+:
