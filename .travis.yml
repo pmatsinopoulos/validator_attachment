@@ -11,7 +11,7 @@ rvm:
   - jruby-19mode
 
 gemfile:
-  Gemfile
-  .gemfiles/gemfile-rails-3.1.0
-  .gemfiles/gemfile-rails-3.1.1
-  .gemfiles/gemfile-rails-3.1.2
+  - Gemfile
+  - .gemfiles/gemfile-rails-3.1.0
+  - .gemfiles/gemfile-rails-3.1.1
+  - .gemfiles/gemfile-rails-3.1.2
