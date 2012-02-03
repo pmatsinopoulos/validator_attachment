@@ -1,3 +1,5 @@
+v1.0.4 Removed dependency on debug gems
+
 v1.0.3 Travis-CI integration correction
 
 v1.0.2 Documentation correction and Travis-CI integration
