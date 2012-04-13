@@ -43,6 +43,8 @@ module ValidatorAttachment
 
     validators.present?
   end
+
+  alias :attached? :is_attached?
 end
 
 module ActiveModel

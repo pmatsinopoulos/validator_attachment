@@ -21,6 +21,8 @@ In your test:
 will test that your +last_name+ attribute on the model +MyAwesomeModel+ has a +:presence+ validation attached. Note
 that +ActiveModel+::+Validations+::+PresenceValidator+ is the +class+ that comes with Rails +ActiveModel+.
 
+Note: "attached?" is an alias for "is_attached?" and you can use whatever you feel like better.
+
 Optionally, you can also check whether the correct options are attached too. So, if you have a Model like:
 
     class MyAwesomeModel < ActiveRecord::Base

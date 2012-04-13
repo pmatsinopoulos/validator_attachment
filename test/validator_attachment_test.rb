@@ -61,6 +61,7 @@ class ValidatorAttachmentTest < ActiveSupport::TestCase
 
   test "validator attachment" do
     assert ActiveModel::EachValidator.respond_to?(:is_attached?)
+    assert ActiveModel::EachValidator.respond_to?(:attached?)
   end
 
   test "acceptance validator" do
@@ -81,6 +82,7 @@ class ValidatorAttachmentTest < ActiveSupport::TestCase
 
   test "presence validator" do
     assert ActiveModel::Validations::PresenceValidator.is_attached?(ValidatorAttachmentTest::SampleModel, :email_2)
+    assert ActiveModel::Validations::PresenceValidator.attached?(ValidatorAttachmentTest::SampleModel, :email_2)
   end
 
   test "exclusion validator" do

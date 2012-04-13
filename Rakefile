@@ -11,8 +11,8 @@ Echoe.new('validator_attachment') do |p|
   p.email       = "panayotis@matsinopoulos.gr"
   p.ignore_pattern = ["tmp/*", "script/*", "rdoc_output/*", "rdoc_output/js/*", "rdoc_output/images/*", "rdoc_output/ActiveModel/*", "rdoc_output/lib/*",
                       "yard_output/*", "yard_output/js/*", "yard_output/css/*", "Gemfile", "Gemfile.lock", "*.iml"]
-  p.runtime_dependencies = ["rails ~>3.0.0"]
-  p.development_dependencies = ["rails ~>3.0.0"]
+  p.runtime_dependencies = ["rails ~>3.0"]
+  p.development_dependencies = ["rails ~>3.0"]
 end
 
 Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each{ |ext| load ext }
