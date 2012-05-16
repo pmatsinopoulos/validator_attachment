@@ -1,3 +1,5 @@
+require 'active_support/core_ext/hash/diff'
+
 module ValidatorAttachment
 
   # Given a +klass+ checks whether the target Validator is attached to
