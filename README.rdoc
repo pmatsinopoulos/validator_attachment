@@ -1,6 +1,6 @@
 = Validator Attachment
 
-It works with Rails >=3.0. Helps me test my validations on Models with less code. Assuming that Rails validations are
+It works with Rails >=4.0. (For Rails >=3.0 use version 1.x) Helps me test my validations on Models with less code. Assuming that Rails validations are
 already tested, by Rails, then when I have a validation on an attribute of a Model, I just want to test whether the
 validation is there. Nothing more.
 
@@ -14,8 +14,8 @@ Assuming that you have a Model like the following:
 
 In your test:
 
-    test "last name has to be present" do
-      assert ActiveModel::Validations::PresenceValidator.is_attached?(MyAwesomeModel, :last_name)
+    it "last name has to be present" do
+      expect(ActiveModel::Validations::PresenceValidator.is_attached?(MyAwesomeModel, :last_name)).to be true
     end
 
 will test that your +last_name+ attribute on the model +MyAwesomeModel+ has a +:presence+ validation attached. Note
@@ -31,17 +31,17 @@ Optionally, you can also check whether the correct options are attached too. So,
 
 In your test:
 
-    test "last name should not be of correct length" do
+    it "last name should not be of correct length" do
       # you do not have to check for all options
-      assert ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3 })
-      assert ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 })
+      it { expect(ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3 })).to be true }
+      it { expect(ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 })).to be true }
 
       # or you can check for all
-      assert ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3, :maximum => 60 })
+      it { expect(ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum => 3, :maximum => 60 })).to be true }
 
       # or you can ask for those and only those, i.e. exact content match
-      assert !ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 }, true)
-      assert ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum > 60, :maximum => 60 }, true)
+      it { expect(!ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :maximum => 60 }, true)).to be true }
+      it { expect(ActiveModel::Validations::LengthValidator.is_attached?(MyAwesomeModel, :last_name, { :minimum > 60, :maximum => 60 }, true)).to be true }
     end
 
 Another example with +with_options+:
@@ -56,8 +56,8 @@ Another example with +with_options+:
 You can test this as follows:
 
     test "user admin validators" do
-      assert ActiveModel::Validations::LengthValidator.is_attached?(User, :password, { :minimum => 10, :if => :is_admin? })
-      assert ActiveModel::Validations::PresenceValidator.is_attached?(User, :username, { :if => :is_admin? })
+      it { expect(ActiveModel::Validations::LengthValidator.is_attached?(User, :password, { :minimum => 10, :if => :is_admin? })).to be true }
+      it { exepct(ActiveModel::Validations::PresenceValidator.is_attached?(User, :username, { :if => :is_admin? })).to be true }
     end
 
 In the file {validator_attachment_test.rb}[https://github.com/pmatsinopoulos/validator_attachment/blob/master/test/validator_attachment_test.rb]

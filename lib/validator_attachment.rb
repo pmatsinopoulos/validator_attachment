@@ -1,11 +1,11 @@
-require 'active_support/core_ext/hash/diff'
+require "rails/all"
 
 module ValidatorAttachment
 
   # Given a +klass+ checks whether the target Validator is attached to
   # the given +attribute+ of the model with class +klass+. It can also check
   # whether validator is attached together with some +options+ and if these
-  # +options+ are the only ones used (given +exact_math+ +true+)
+  # +options+ are the only ones used (given +exact_match+ +true+)
   #
   # @param [Class] klass the Model class that uses the Validator
   # @param [Symbol] attribute the attribute of the Model class that we want
@@ -18,7 +18,7 @@ module ValidatorAttachment
   #   should not have more or less options.
   # @return [boolean] whether Validator is attached or not
   #
-  # @see http://github.com/pmatsinopoulos/validator_attachment Please project home page for more details and examples of usage.
+  # @see http://github.com/pmatsinopoulos/validator_attachment project home page for more details and examples of usage.
   #
   def is_attached?(klass, attribute, options=nil, exact_match=false)
     validators = klass._validate_callbacks.map{|vc| vc.raw_filter}
@@ -39,7 +39,7 @@ module ValidatorAttachment
         # The logic of comparison:
         #   I find the difference of +val.options+ to +options+ and then I remove from +val.options+ this difference.
         #   The remaining keys of +val.options+ should be hash equal to +options+
-        validators = validators.find_all{|val| val.options.present? && val.options.reject{|k,v| val.options.diff(options).keys.include?(k)} == options}
+        validators = validators.find_all{|val| val.options.present? && val.options.merge(options) == val.options}
       end
     end
 
