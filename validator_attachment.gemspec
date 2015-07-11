@@ -22,9 +22,8 @@ Gem::Specification.new do |s|
   s.summary = "Is this ActiveModel Validator Used?"
   s.test_files = ["spec/validator_attachment_spec.rb", "spec/spec_helper.rb", "spec/dummy_validator.rb"]
 
-  s.add_runtime_dependency('rails', "~> 4.0")
-  s.add_development_dependency('bundler')
-  s.add_development_dependency('rake')
-  s.add_development_dependency('rspec')
-  s.add_development_dependency('rails', "~> 4.0")
+  s.add_runtime_dependency('rails', "~>4.0", "~>4.0")
+  s.add_development_dependency('bundler', '~>1.0')
+  s.add_development_dependency('rake', '~>10.0')
+  s.add_development_dependency('rspec', '~>3.0')
 end

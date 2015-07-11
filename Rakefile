@@ -1,19 +1,6 @@
 #!/usr/bin/env rake
 require 'rubygems'
 require 'rake'
-require 'echoe'
-
-Echoe.new('validator_attachment') do |p|
-  p.summary     = "Is this ActiveModel Validator Used?"
-  p.description = "Checks whether an ActiveModel Validator is attached to an attribute of a Model and with which options"
-  p.url         = "http://github.com/pmatsinopoulos/validator_attachment"
-  p.author      = "Panayotis Matsinopoulos"
-  p.email       = "panayotis@matsinopoulos.gr"
-  p.ignore_pattern = ["tmp/*", "script/*", "rdoc_output/*", "rdoc_output/js/*", "rdoc_output/images/*", "rdoc_output/ActiveModel/*", "rdoc_output/lib/*",
-                      "yard_output/*", "yard_output/js/*", "yard_output/css/*", "Gemfile", "Gemfile.lock", "*.iml"]
-  p.runtime_dependencies = ["rails ~>3.0"]
-  p.development_dependencies = ["rails ~>3.0"]
-end
 
 Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each{ |ext| load ext }
 
